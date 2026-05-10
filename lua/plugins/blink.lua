@@ -1,6 +1,10 @@
 return {
   "saghen/blink.cmp",
   opts = {
+    keymap = {
+      ["<Tab>"] = { "accept", "fallback" },
+      ["<CR>"] = {  "fallback" },
+    },
     completion = {
       ghost_text = { enabled = false },
       list = {
