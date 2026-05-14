@@ -37,3 +37,9 @@ vim.api.nvim_create_autocmd({ "TextChanged", "TextChangedI" }, {
 -- 全部block光标
 vim.opt.guicursor = "n-v-c-sm-i-ci-ve-r-cr-o:block"
 
+-- windows only / no cmd
+-- nushell
+if vim.fn.has("win32") then
+    vim.o.shell = "nu.exe"
+end
+
