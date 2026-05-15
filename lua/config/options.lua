@@ -24,13 +24,17 @@ local save_timer
 vim.api.nvim_create_autocmd({ "TextChanged", "TextChangedI" }, {
   pattern = "*",
   callback = function()
-    if vim.bo.buftype ~= "" then return end
-    if save_timer then pcall(vim.uv.close,save_timer) end
+    if vim.bo.buftype ~= "" then
+      return
+    end
+    if save_timer then
+      pcall(vim.uv.close, save_timer)
+    end
     save_timer = vim.defer_fn(function()
       if vim.fn.expand("%") ~= "" and vim.bo.modified then
         vim.cmd("silent write")
       end
-    end, 5000)
+    end, 2000)
   end,
 })
 
@@ -40,6 +44,25 @@ vim.opt.guicursor = "n-v-c-sm-i-ci-ve-r-cr-o:block"
 -- windows only / no cmd
 -- nushell
 if vim.fn.has("win32") then
-    vim.o.shell = "nu.exe"
+  vim.o.shell = "nu.exe"
 end
 
+if vim.g.neovide then
+  -- neovide config
+
+  vim.o.guifont = "Maple Mono NF CN" -- text below applies for VimScript
+  vim.g.neovide_scale_factor = 0.85
+
+  vim.g.neovide_opacity = 0.85
+  vim.g.neovide_normal_opacity = 0.85
+
+  vim.g.neovide_theme = "light"
+
+  vim.g.neovide_refresh_rate_idle = 5
+
+  vim.g.neovide_refresh_rate = 60
+  -- so fucking my keyboard do not have F11
+  vim.keymap.set("n", "<M-CR>", function()
+    vim.g.neovide_fullscreen = not vim.g.neovide_fullscreen
+  end)
+end
