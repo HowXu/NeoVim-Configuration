@@ -6,7 +6,6 @@ vim.opt.number = true
 
 -- 静默LSP消息
 vim.lsp.handlers["$/progress"] = function() end
-
 -- 缩进长度
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
