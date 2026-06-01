@@ -8,7 +8,7 @@ set encoding=UTF-8
 " 系统剪切板
 set clipboard=unnamedplus
 " 去掉冒号
-set fillchars=eob:-
+set fillchars=eob:\ 
 " 禁用宏录制
 nnoremap q <Nop>
 "显示行数Enable line numbers
@@ -30,7 +30,8 @@ set nobackup
 set nowritebackup
 " Having longer updatetime (default is 4000 ms = 4s) leads to noticeable
 " delays and poor user experience
-set updatetime=300
+" 在Alacritty上 SmoothCursor的表现会受到下面值的影响 调高一点会让表现更好
+set updatetime=5000
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved
